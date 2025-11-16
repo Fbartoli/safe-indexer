@@ -1,40 +1,42 @@
 import { parseAbiItem } from "abitype";
 import { createConfig, factory } from "ponder";
 
-import { LlamaCoreAbi } from "./abis/LlamaCoreAbi";
-import { LlamaPolicyAbi } from "./abis/LlamaPolicyAbi";
+import { SafeSingletonAbi } from "./abis/1.4.1/SafeSingleton";
 
-const llamaFactoryEvent = parseAbiItem(
-  "event LlamaInstanceCreated(address indexed deployer, string indexed name, address llamaCore, address llamaExecutor, address llamaPolicy, uint256 chainId)",
-);
+const proxyFactoryAddress = `0x4e1DCf7AD4e460CfD30791CCC4F9c8a4f820ec67` as `0x${string}`;
+
 
 export default createConfig({
   chains: {
-    sepolia: {
-      id: 11155111,
-      rpc: process.env.PONDER_RPC_URL_11155111,
+    mainnet: {
+      id: 1,
+      rpc: process.env.PONDER_RPC_URL_1,
+    },
+    worldchain: {
+      id: 480,
+      rpc: process.env.PONDER_RPC_URL_480,
     },
   },
   contracts: {
-    LlamaCore: {
-      chain: "sepolia",
-      abi: LlamaCoreAbi,
+    SafeProxyMainnet: {
+      chain: "mainnet",
+      abi: SafeSingletonAbi,
       address: factory({
-        address: "0xFf5d4E226D9A3496EECE31083a8F493edd79AbEB",
-        event: llamaFactoryEvent,
-        parameter: "llamaCore",
+        address: proxyFactoryAddress,
+        event: parseAbiItem("event ProxyCreation(address indexed proxy, address indexed singleton)"),
+        parameter: "proxy",
       }),
-      startBlock: 4121269,
+      startBlock: 23804491,
     },
-    LlamaPolicy: {
-      chain: "sepolia",
-      abi: LlamaPolicyAbi,
+    SafeProxyWorldChain: {
+      chain: "worldchain",
+      abi: SafeSingletonAbi,
       address: factory({
-        address: "0xFf5d4E226D9A3496EECE31083a8F493edd79AbEB",
-        event: llamaFactoryEvent,
-        parameter: "llamaPolicy",
+        address: proxyFactoryAddress,
+        event: parseAbiItem("event ProxyCreation(address indexed proxy, address indexed singleton)"),
+        parameter: "proxy",
       }),
-      startBlock: 4121269,
+      startBlock: 21900000,
     },
   },
 });

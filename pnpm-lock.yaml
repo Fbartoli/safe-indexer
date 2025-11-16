@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@safe-global/safe-deployments':
+        specifier: ^1.37.48
+        version: 1.37.48
       abitype:
         specifier: ^0.10.2
         version: 0.10.3(typescript@5.9.3)
@@ -458,6 +461,9 @@ packages:
     resolution: {integrity: sha512-k+/Rkcyx//P6fetPoLMb8pBeqJBNGx81uuf7iljX9++yNBVRDQgD04L+SVXmXmh5ZP4/WOp4mWF0kmi06PW2tA==}
     cpu: [x64]
     os: [win32]
+
+  '@safe-global/safe-deployments@1.37.48':
+    resolution: {integrity: sha512-SeRkHlKDwtRarhpU2Ow7dFebJRppIGoYCMMeiTcW/MPovswvQGkPlki2/VoYKKKkRupTRXJ2VyRygdeKYz6VeQ==}
 
   '@scure/base@1.2.6':
     resolution: {integrity: sha512-g/nm5FgUa//MCj1gV09zTJTaM6KBAHqLN907YVQqf7zC49+DcO4B1so4ZX07Ef10Twr6nuqYEH9GEggFXA4Fmg==}
@@ -2010,6 +2016,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.53.2':
     optional: true
+
+  '@safe-global/safe-deployments@1.37.48':
+    dependencies:
+      semver: 7.7.3
 
   '@scure/base@1.2.6': {}
 

@@ -12,9 +12,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "ponder": "^0.15.2",
+    "@safe-global/safe-deployments": "^1.37.48",
     "abitype": "^0.10.2",
     "hono": "^4.5.0",
+    "ponder": "^0.15.2",
     "viem": "^2.21.3"
   },
   "devDependencies": {
