@@ -2,7 +2,6 @@ import { safeProxy } from "ponder:schema";
 import { MultiChainHandlerParams } from "../type/HandlerParams";
 import { createChainPrefixedId } from "../../utils/chainPrefix";
 
-// Type-safe handler for SafeSetup events (works for all chains automatically!)
 export const SafeSetupHandler = async ({
   event,
   context,
