@@ -2,6 +2,9 @@
   "extends": ["ponder", "prettier"],
   "plugins": ["prettier"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "object-curly-spacing": "off",
+    "no-trailing-spaces": "off",
+    "@typescript-eslint/object-curly-spacing": "off"
   }
 }
