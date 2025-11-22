@@ -12,9 +12,18 @@ export default createConfig({
       id: 1,
       rpc: process.env.PONDER_RPC_URL_1,
     },
-    worldchain: {
-      id: 480,
-      rpc: process.env.PONDER_RPC_URL_480,
+  },
+  accounts: {
+    SafeAccountMainnet: {
+      chain: "mainnet",
+      address: factory({
+        address: proxyFactoryAddress,
+        event: parseAbiItem(
+          "event ProxyCreation(address indexed proxy, address indexed singleton)",
+        ),
+        parameter: "proxy",
+      }),
+      startBlock: 23804491,
     },
   },
   contracts: {
@@ -29,18 +38,6 @@ export default createConfig({
         parameter: "proxy",
       }),
       startBlock: 23804491,
-    },
-    SafeProxyWorldChain: {
-      chain: "worldchain",
-      abi: SafeSingletonAbi,
-      address: factory({
-        address: proxyFactoryAddress,
-        event: parseAbiItem(
-          "event ProxyCreation(address indexed proxy, address indexed singleton)",
-        ),
-        parameter: "proxy",
-      }),
-      startBlock: 21900000,
     },
   },
 });

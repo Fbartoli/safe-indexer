@@ -1,6 +1,7 @@
 {
   "extends": ["ponder", "prettier"],
   "plugins": ["prettier"],
+  "ignorePatterns": ["**/vite.config.ts", "**/dist/**", "**/node_modules/**"],
   "rules": {
     "prettier/prettier": "error",
     "object-curly-spacing": "off",
