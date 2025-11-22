@@ -38,11 +38,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --fix --max-warnings=0 --ignore-pattern '**/vite.config.ts'",
-      "prettier --write"
-    ],
-    "!(*vite.config).{ts,tsx}": [
-      "eslint --fix --max-warnings=0",
+      "bash -c 'if [[ ! \"$1\" =~ vite.config.ts$ ]]; then eslint --fix --max-warnings=0 \"$1\"; fi' --",
       "prettier --write"
     ],
     "*.{json,md,yml,yaml}": [
